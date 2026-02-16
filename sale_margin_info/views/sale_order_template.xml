@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sale_order_portal_template_inherit_margin"
+              inherit_id="sale.sale_order_portal_template"
+              name="Sale Order Portal Margin Button">
+
+        <xpath expr="//a[contains(@class, 'o_portal_invoice_print')]" position="after">
+            <a href="#"
+               role="button"
+               class="btn btn-secondary d-block mt-2 o_portal_sale_margin_info"
+               title="Show Margin Info"
+               t-att-data-order-id="sale_order.id">
+                <i class="fa fa-percent me-1"/> Show Margin Info
+            </a>
+            <div class="o_sale_margin_info_popup alert alert-so-margin border mt-2 mb-0 d-none"
+                 t-att-data-order-id="sale_order.id">
+                <div class="text-muted fw-bolder mb-1 o_sale_margin_info_title">Margin Information</div>
+                <div class="small o_sale_margin_info_content fw-bold">
+                    Click <strong>Show Margin Info</strong> to load the latest margin details.
+                </div>
+            </div>
+        </xpath>
+    </template>
+    
+</odoo>

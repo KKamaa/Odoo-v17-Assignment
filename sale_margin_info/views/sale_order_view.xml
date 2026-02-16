@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="sale_margin_sale_order_form">
+        <field name="name">sale.order.margin.info.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="priority" eval="15"/>
+        <field name="arch" type="xml">
+            <field name="tax_totals" position="after">
+                <group string="Margin Information" name="sale_margin_info_group" class="fw-bolder" colspan="2">
+                    <field name="margin_percentage"/>
+                    <field name="requires_manager_approval" options="{'label_color': '#FF0000', 'font_weight': 600, 'field_type': 'boolean'}"/>
+                </group>
+            </field>
+        </field>
+    </record>
+
+    <record id="model_sale_order_action_quotation_sent" model="ir.actions.server">
+        <field name="name">Request Sale Margin Approval</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">records.action_request_sale_margin_approval()</field>
+    </record>
+
+</odoo>
